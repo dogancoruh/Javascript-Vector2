@@ -8,6 +8,9 @@ Features
 * Calculate distance between two vectors/points.
 * Rotate a vector by degree or radians.
 * Calculate angle between two vectors for signed, unsigned and 360 degree value.
+* Sort vectors/points by angle
+* Calculate center of points
+* Calculate total area of points
 
 Usage
 -----
