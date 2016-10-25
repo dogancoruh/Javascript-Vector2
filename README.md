@@ -34,7 +34,7 @@ var vM = Vector2.multiply(v, 3); //12, 12
 var vD = Vector2.divide(v, 2); // 2, 2
 ```
 Inverse
-**Inverts a vector**
+> Inverts a vector
 ```javascript
 var v = new Vector2(4, 4);
 var vI = Vector2.inverse(v); // -4, -4
