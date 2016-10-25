@@ -34,6 +34,7 @@ var vM = Vector2.multiply(v, 3); //12, 12
 var vD = Vector2.divide(v, 2); // 2, 2
 ```
 Inverse
+**Inverts a vector**
 ```javascript
 var v = new Vector2(4, 4);
 var vI = Vector2.inverse(v); // -4, -4
@@ -42,4 +43,12 @@ Set Length
 ```javascript
 var v = new Vector2(5, 3);
 var vL = Vector2.setLength(v, 5); // result is same direction, different size
+```
+isZeroVector
+```javascript
+var v = new Vector2(5, 3);
+if (Vector2.isZeroVector(v))
+  console.info("zero vector!");
+else
+  console.info("not zero vector");
 ```
