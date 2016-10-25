@@ -40,11 +40,13 @@ var v = new Vector2(4, 4);
 var vI = Vector2.inverse(v); // -4, -4
 ```
 Set Length
+> Sets the length of the vector
 ```javascript
 var v = new Vector2(5, 3);
 var vL = Vector2.setLength(v, 5); // result is same direction, different size
 ```
 isZeroVector
+> Checks if vector is 0, 0
 ```javascript
 var v = new Vector2(5, 3);
 if (Vector2.isZeroVector(v))
