@@ -1,3 +1,5 @@
+![alt tag](https://raw.githubusercontent.com/dogancoruh/Javascript-Vector2/master/README.jpg)
+
 # Javascript-Vector2
 
 Javascript Vector2 support class for 2D vector operations. This library can be used to store vector's x and y data as an instance or to make vector operations like add, subtract, rotate, determining angle between two vectors as a static class.
