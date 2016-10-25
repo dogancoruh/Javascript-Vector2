@@ -46,7 +46,7 @@ var v = new Vector2(5, 3);
 var vL = Vector2.setLength(v, 5); // result is same direction, different size
 ```
 isZeroVector
-> Checks if vector is 0, 0
+> Checks if vector is 0, 0 <
 ```javascript
 var v = new Vector2(5, 3);
 if (Vector2.isZeroVector(v))
