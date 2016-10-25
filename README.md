@@ -1,4 +1,4 @@
-![alt tag](https://raw.githubusercontent.com/dogancoruh/Javascript-Vector2/master/README.jpg)
+![alt tag](https://raw.githubusercontent.com/dogancoruh/Javascript-Vector2/bab448512be52aecb179a7968f8941d35636d980/README.jpg)
 
 # Javascript-Vector2
 
