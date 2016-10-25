@@ -34,20 +34,16 @@ var vM = Vector2.multiply(v, 3); //12, 12
 var vD = Vector2.divide(v, 2); // 2, 2
 ```
 Inverse
-> Inverts a vector
 ```javascript
 var v = new Vector2(4, 4);
 var vI = Vector2.inverse(v); // -4, -4
 ```
 Set Length
-> Sets the length of the vector
 ```javascript
 var v = new Vector2(5, 3);
 var vL = Vector2.setLength(v, 5); // result is same direction, different size
 ```
 isZeroVector
-> Checks if vector is 0, 0
->
 ```javascript
 var v = new Vector2(5, 3);
 if (Vector2.isZeroVector(v))
@@ -55,3 +51,69 @@ if (Vector2.isZeroVector(v))
 else
   console.info("not zero vector");
 ```
+
+magnitude
+Gives length of vector
+var v = new Vector2(5, 3);
+var l = Vector2.magnitude(v);
+
+normalize
+Normalizes vector to unit vector (sets its length to 1)
+var v = new Vector2(5, 3);
+var vN = Vector2.normalize(v);
+
+dot
+Gives dot product of two vectors
+var v1 = new Vector(7, 2);
+var v2 = new Vector(3, 5);
+var dot = Vector2.dot(v1, v2);
+
+cross
+Gives cross product of two vectors
+var v1 = new Vector(7, 2);
+var v2 = new Vector(3, 5);
+var cross = Vector2.cross(v1, v2);
+
+distance
+Gives distance between two vector positions
+var v1 = new Vector2(6, 6);
+var v2 = new Vector2(2, 4);
+var distance = Vector2.distance(v1, v2);
+
+rotateRadian
+Rotates vector by radians
+var v = new Vector2(4, 4);
+var vR = Vector2.rotateRadian(Math.PI / 2);
+
+rotateDegree
+Rotates vector by degrees
+var v = new Vector2(5, 0);
+var vD = Vector2.rotateDegree(90); // rotates 90 degrees in clockwise
+
+angleUnsigned
+Gives angle between two vectors without sign in 180 degrees
+var v1 = new Vector2(-3, 4);
+var v2 = new Vector2(5, 3);
+var angle = Vector2.angleUnsigned(v1, v2);
+
+angleSigned
+Gives angle between two vector with sign in 180 degrees
+var v1 = new Vector2(-3, 4);
+var v2 = new Vector2(5, 3);
+var angle = Vector2.angleSigned(v1, v2);
+
+angle360
+Gives angle between two vector in 360 degreese
+var v1 = new Vector2(-3, 4);
+var v2 = new Vector2(5, 3);
+var angle = Vector2.angle360(v1, v2);
+
+isEqual
+Returns true if two given vectors are equal for x an y values
+var v1 = new Vector2(3, 3);
+var v2 = new Vector2(3, 3);
+if (Vector2.equals(v1, v2))
+  console.info("equals!");
+else
+  console.info("not equal");
+
