@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Vector Library - Example 2</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="libraries/jquery-1.8.3.js" type="text/javascript"></script>
+    <script src="libraries/jquery-ui-1.9.2.custom.js" type="text/javascript"></script>
+    <script src="js/vector2.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var timerId = 0;
+
+        $(document).ready(function () {
+            // initialize default layout
+            $("#pointA").css("left", "100px");
+            $("#pointA").css("top", "100px");
+            $("#pointA").css("cursor", "pointer");
+            $("#pointA").draggable();
+            $("#pointA").bind("mousedown", onPointMouseDown);
+            $(document).bind("mouseup", onPointMouseUp);
+
+            $("#pointB").css("left", "200px");
+            $("#pointB").css("top", "200px");
+            $("#pointB").css("cursor", "pointer");
+            $("#pointB").draggable();
+            $("#pointB").bind("mousedown", onPointMouseDown);
+            $(document).bind("mouseup", onPointMouseUp);
+
+            // initialize to get mouse position
+            $("#container").bind("mousemove", onContainerMouseMove);
+
+            refreshObjects();
+        });
+
+        function refreshObjects() {
+            var canvas = document.getElementById("canvas");
+            var canvasContext = canvas.getContext("2d");
+            canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+            canvasContext.lineWidth = 2;
+            var pointA = $("#pointA");
+            var vA = new Vector2(pointA.position().left, pointA.position().top);
+            canvasContext.beginPath();
+            canvasContext.moveTo(vA.x, vA.y);
+            var pointB = $("#pointB");
+            var vB = new Vector2(pointB.position().left, pointB.position().top);
+            canvasContext.lineTo(vB.x, vB.y);
+            canvasContext.closePath();
+            canvasContext.stroke();
+
+            $("#sizeA").html("Size of Vector A = " + Math.round(Vector2.magnitude(vA)));
+            $("#sizeB").html("Size of Vector B = " + Math.round(Vector2.magnitude(vB)));
+            $("#distance").html("Distance = " + Math.round(Vector2.distance(vA, vB)));
+        }
+
+        function onContainerMouseMove(event, sender) {
+            mouseX = event.pageX - $("#container")[0].offsetLeft;
+            mouseY = event.pageY - $("#container")[0].offsetTop;
+        }
+
+        function onPointMouseDown(event, sender) {
+            timerId = window.setInterval(onInterval, 0);
+        }
+
+        function onPointMouseUp(event, sender) {
+            window.clearInterval(timerId);
+        }
+
+        function onInterval() {
+            refreshObjects();
+        }
+
+    </script>
+</head>
+<body>
+    <div id="left">
+        <div id="title">Example 2 : Calculate size of a vector and distance between two vectors.</div>
+        <div id="container">
+            <canvas id="canvas" width="400" height="400" class="canvas"></canvas>
+            <div id="pointA" class="point"><img class="point" src="images/dot.png" onmousedown="return false;" /></div>
+            <div id="pointB" class="point"><img class="point" src="images/dot.png" onmousedown="return false;" /></div>
+            <div id="sizeA" class="distance"></div>
+            <div id="sizeB" class="distance distance2"></div>
+            <div id="distance" class="distance distance3"></div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="description">
+            <b>To calculate length of the vector :</b><br /><span class="code">var v = new Vector2(10, 0);<br />var length = Vector2.magnitude(v);</span><br /><span class="text">It returns 10</span><br /><br />
+            <b>To set length of the vector :</b><br /><span class="code">var v = new Vector2(10, 5);<br />var length = Vector2.setLength(v, 10);</span><br /><span class="text">It returns a vector with magnitude(10)</span><br /><br />
+            <b>To calculate distance between two vectors :</b><br /><span class="code">var v1 = new Vector2(0, 10);<br />var v2 = new Vector(10, 10);<br />var distance = Vector2.distance(v1, v2);</span><br /><span class="text">It returns something :)</span><br /><br />
+            <b>To invert a vector :</b><br /><span class="code">var v = new Vector2(-5, 10);<br />v = Vector2.invert(v);</span><br /><span class="text">It returns a vector with (5, -10)</span><br /><br />
+            <b>To normalize a vector (unit vector) :</b><br /><span class="code">var v = new Vector2(10, 0);<br />v = Vector2.normalize(v);</span><br /><span class="text">It returns a vector with (1, 0)</span><br /><br />
+            <b>To add, subtract two vectors :</b><br /><span class="code">var v1 = new Vector2(0, 10);<br />var v2 = new Vector(10, 10);<br />var v3 = Vector2.add(v1, v2);<br />var v4 = Vector2.subtract(v1, v2)</span><br /><br />
+            <b>To multiply or divide a vector with a scaler:</b><br /><span class="code">var v = new Vector2(1, 1);<br />v = Vector2.multiply(v, 10);</span><br /><span class="text">It returns a vector with (10, 10)</span><br /><span class="code">var v = new Vector2(10, 10);<br />v = Vector2.divide(v, 10);</span><br /><span class="text">It returns a vector with (1, 1)</span><br /><br />
+        </div>
+    </div>
+</body>
+</html>

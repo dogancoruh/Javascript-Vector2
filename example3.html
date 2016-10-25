@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Vector Library - Example 3</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="libraries/jquery-1.8.3.js" type="text/javascript"></script>
+    <script src="libraries/jquery-ui-1.9.2.custom.js" type="text/javascript"></script>
+    <script src="js/vector2.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var timerId = 0;
+
+        var originX = 200;
+        var originY = 200;
+
+        var points = null;
+
+        function getPoints() {
+            var points = new Array();
+
+            for (var i = 1; i <= 6; i++)
+                points.push(new Vector2($("#point" + i).position().left - originX, $("#point" + i).position().top - originY));
+            
+            return points;
+        }
+
+        $(document).ready(function () {
+            // initialize default layout
+            points = new Array();
+
+            var v = new Vector2(100, 0);
+            for (var i = 1; i <= 6; i++) {
+                $("#point" + i).css("left", (originX + v.x) + "px");
+                $("#point" + i).css("top", (originY + v.y) + "px");
+                $("#point" + i).draggable();
+                $("#point" + i).bind("mousedown", onPointMouseDown);
+
+                points.push($("#point" + i));
+
+                v = Vector2.rotateDegree(v, 60);
+            }
+
+            $("#container").bind("mouseup", onPointMouseUp);
+
+            refreshObjects();
+            /*
+            $("#sizeA").html("Size of Vector A = " + Math.round(Vector2.magnitude(vA)));
+            $("#sizeB").html("Size of Vector B = " + Math.round(Vector2.magnitude(vB)));
+            $("#distance").html("Distance = " + Math.round(Vector2.distance(vA, vB)));
+            */
+        });
+
+        function refreshObjects() {
+            // calculate center of points
+            var pointVectors = getPoints();
+
+            var checkBox = document.getElementById("checkBoxSortPoints");
+            if (checkBox.checked)
+                pointVectors = Vector2.sortPointsByAngle(pointVectors);
+
+            var vCenter = Vector2.centerOfPoints(pointVectors);
+            $("#pointCenter").css("left", (originX + vCenter.x) + "px");
+            $("#pointCenter").css("top", (originY + vCenter.y) + "px");
+
+            // initialize to get mouse position
+            $(document).bind("mousemove", onContainerMouseMove);
+
+            var canvas = document.getElementById("canvas");
+            var canvasContext = canvas.getContext("2d");
+            canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+            canvasContext.lineWidth = 2;
+            canvasContext.beginPath();
+
+            for (var i = 0; i < pointVectors.length - 1; i++) {
+                var pointA = pointVectors[i];
+                var pointB = pointVectors[i + 1];
+
+                canvasContext.moveTo(originX + pointA.x, originY + pointA.y);
+                canvasContext.lineTo(originX + pointB.x, originY + pointB.y);
+            }
+            var pointA = pointVectors[0];
+            var pointB = pointVectors[points.length - 1];
+            canvasContext.moveTo(originX + pointA.x, originY + pointA.y);
+            canvasContext.lineTo(originX + pointB.x, originY + pointB.y);
+
+            canvasContext.closePath();
+            canvasContext.stroke();
+
+            var area = Vector2.areaOfPoints(pointVectors);
+            $("#area").html("Area of polygon = " + area);
+        }
+
+        function onContainerMouseMove(event, sender) {
+            mouseX = event.pageX - $("#container")[0].offsetLeft;
+            mouseY = event.pageY - $("#container")[0].offsetTop;
+        }
+
+        function onPointMouseDown(event, sender) {
+            timerId = window.setInterval(onInterval, 0);
+        }
+
+        function onPointMouseUp(event, sender) {
+            window.clearInterval(timerId);
+        }
+
+        function onInterval() {
+            refreshObjects();
+        }
+
+    </script>
+</head>
+<body>
+    <div id="left">
+        <div id="title">Example 3 : Calculate center of a point array and calculate the area of them and sort them by their angle to create a convex shape.</div>
+        <div id="container">
+            <canvas id="canvas" width="400" height="400" class="canvas"></canvas>
+            <div id="point1" class="point"><img class="point" src="images/dot.png" onmousedown="return false;" /></div>
+            <div id="point2" class="point"><img class="point" src="images/dot.png" onmousedown="return false;" /></div>
+            <div id="point3" class="point"><img class="point" src="images/dot.png" onmousedown="return false;" /></div>
+            <div id="point4" class="point"><img class="point" src="images/dot.png" onmousedown="return false;" /></div>
+            <div id="point5" class="point"><img class="point" src="images/dot.png" onmousedown="return false;" /></div>
+            <div id="point6" class="point"><img class="point" src="images/dot.png" onmousedown="return false;" /></div>
+            <div id="pointCenter" class="point pointCenter"><img class="point" src="images/dotCenter.png" onmousedown="return false;" /></div>
+            <div id="area" class="distance"></div>
+        </div>
+        <br />
+        <span class="text"><input type="checkbox" checked id="checkBoxSortPoints" onchange="refreshObjects();" /> Sort points for convex polygon</span>
+    </div>
+    <div id="right">
+        <div id="description">
+            <b>To calculate center of a point array :</b><br /><span class="code">var points = new Array();<br />points.push(new Vector2(10, 0));<br />points.push(new Vector2(10, 10));<br />points.push(new Vector2(15, 5));<br />var vCenter = Vector2.centerOfPoints(points);</span><br /><span class="text">It returns the center point</span><br /><br />
+            <b>To calculate the area of a point polygon :</b><br /><span class="code">var points = new Array();<br />points.push(new Vector2(10, 0));<br />points.push(new Vector2(10, 10));<br />points.push(new Vector2(15, 5));<br />var vCenter = Vector2.areaOfPoints(points);</span><br /><span class="text">It returns the area of polygon</span><br /><br />
+            <b>To sort points by clockwise :</b><br /><span class="code">var points = new Array();<br />points.push(new Vector2(10, 0));<br />points.push(new Vector2(10, 10));<br />points.push(new Vector2(15, 5));<br />var sortedPoints = Vector2.sortPointsByAngle(points);</span><br /><span class="text">It returns the sorted points by clockwise</span><br /><br />
+        </div>
+    </div>
+</body>
+</html>

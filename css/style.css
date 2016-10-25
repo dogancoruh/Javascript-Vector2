@@ -1,0 +1,94 @@
+#left, #right {
+    float: left;
+}
+
+#title
+{
+    width: 400px;
+    height: 60px;
+    text-align: center;
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#description
+{
+    padding-top: 5px;
+    width: 400px;
+    height: 50px;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 15px;
+}
+
+span.code {
+    font-family: 'Courier New';
+    font-size: 15px;
+}
+
+span.text {
+    font-family: Verdana;
+    font-size: 12px;
+}
+
+#container
+{
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.canvas
+{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border: 1px solid #ff0000;
+}
+
+div.point
+{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+div.pointCenter
+{
+    cursor: default;
+}
+
+img.point
+{
+    position: relative;
+    left: -15px;
+    top: -15px;
+}
+
+.angle, .distance
+{
+    position: absolute;
+    left: 0px;
+    top: 330px;
+    width: 400px;
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+}
+
+.angle2, .distance2
+{
+    top: 350px;
+}
+
+.angle3, .distance3
+{
+    top: 370px;
+}
+
+#arrow {
+    position: absolute;
+}
