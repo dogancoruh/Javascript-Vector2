@@ -117,3 +117,29 @@ if (Vector2.equals(v1, v2))
 else
   console.info("not equal");
 
+centerOfPoints
+Gets center point of given vector points
+var points = new Array();
+points.add(new Vector2(10, 10));
+points.add(new Vector2(10, 15));
+points.add(new Vector2(4, 5));
+points.add(new Vector2(8, 7));
+var vCenter = Vector2.centerOfPoints(points);
+
+sortPointsByAngle
+Sorts points by starting from X axis
+var points = new Array();
+points.add(new Vector2(10, 10));
+points.add(new Vector2(10, 15));
+points.add(new Vector2(4, 5));
+points.add(new Vector2(8, 7));
+points = points.sortPointsByAngle(points);
+
+areaOfPoints
+Get total area that given points take
+var points = new Array();
+points.add(new Vector2(10, 10));
+points.add(new Vector2(10, 15));
+points.add(new Vector2(4, 5));
+points.add(new Vector2(8, 7));
+var areaSize = points.areaOfPoints(points);
