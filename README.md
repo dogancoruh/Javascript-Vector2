@@ -54,7 +54,7 @@ else
   console.info("not zero vector");
 ```
 
-magnitude
+**magnitude**
 Gives length of vector
 ```javascript
 var v = new Vector2(5, 3);
