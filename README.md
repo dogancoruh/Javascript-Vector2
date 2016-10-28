@@ -17,30 +17,32 @@ Features
 Usage
 -----
 
-Create a vector
+**Create a vector**
 ```javascript
 var v = new Vector2(5, 3); // x, y
 var v = Vector2.empty; // 0, 0
 ```
-Add, Subtract vectors
+**Add, Subtract vectors**
 ```javascript
 var v1 = new Vector2(5, 3);
 var v2 = new Vector2(4, 4);
 var v3 = Vector2.add(v1, v2);
 var v4 = Vector2.subtract(v1, v2);
 ```
-Multiply, Divide by scalar
+**Multiply, Divide by scalar**
 ```javascript
 var v = new Vector2(4, 4);
 var vM = Vector2.multiply(v, 3); //12, 12
 var vD = Vector2.divide(v, 2); // 2, 2
 ```
-Inverse
+**Inverse**
+Inverts the vector
 ```javascript
 var v = new Vector2(4, 4);
 var vI = Vector2.inverse(v); // -4, -4
 ```
-Set Length
+**Set Length**
+Sets length of vector
 ```javascript
 var v = new Vector2(5, 3);
 var vL = Vector2.setLength(v, 5); // result is same direction, different size
@@ -61,14 +63,14 @@ var v = new Vector2(5, 3);
 var l = Vector2.magnitude(v);
 ```
 
-normalize
+**normalize**
 Normalizes vector to unit vector (sets its length to 1)
 ```javascript
 var v = new Vector2(5, 3);
 var vN = Vector2.normalize(v);
 ```
 
-dot
+**dot**
 Gives dot product of two vectors
 ```javascript
 var v1 = new Vector(7, 2);
@@ -76,7 +78,7 @@ var v2 = new Vector(3, 5);
 var dot = Vector2.dot(v1, v2);
 ```
 
-cross
+**cross**
 Gives cross product of two vectors
 ```javascript
 var v1 = new Vector(7, 2);
@@ -84,7 +86,7 @@ var v2 = new Vector(3, 5);
 var cross = Vector2.cross(v1, v2);
 ```
 
-distance
+**distance**
 Gives distance between two vector positions
 ```javascript
 var v1 = new Vector2(6, 6);
@@ -92,21 +94,21 @@ var v2 = new Vector2(2, 4);
 var distance = Vector2.distance(v1, v2);
 ```
 
-rotateRadian
+**rotateRadian**
 Rotates vector by radians
 ```javascript
 var v = new Vector2(4, 4);
 var vR = Vector2.rotateRadian(Math.PI / 2);
 ```
 
-rotateDegree
+**rotateDegree**
 Rotates vector by degrees
 ```javascript
 var v = new Vector2(5, 0);
 var vD = Vector2.rotateDegree(90); // rotates 90 degrees in clockwise
 ```
 
-angleUnsigned
+**angleUnsigned**
 Gives angle between two vectors without sign in 180 degrees
 ```javascript
 var v1 = new Vector2(-3, 4);
@@ -114,7 +116,7 @@ var v2 = new Vector2(5, 3);
 var angle = Vector2.angleUnsigned(v1, v2);
 ```
 
-angleSigned
+**angleSigned**
 Gives angle between two vector with sign in 180 degrees
 ```javascript
 var v1 = new Vector2(-3, 4);
@@ -122,7 +124,7 @@ var v2 = new Vector2(5, 3);
 var angle = Vector2.angleSigned(v1, v2);
 ```
 
-angle360
+**angle360**
 Gives angle between two vector in 360 degreese
 ```javascript
 var v1 = new Vector2(-3, 4);
@@ -130,7 +132,7 @@ var v2 = new Vector2(5, 3);
 var angle = Vector2.angle360(v1, v2);
 ```
 
-isEqual
+**isEqual**
 Returns true if two given vectors are equal for x an y values
 ```javascript
 var v1 = new Vector2(3, 3);
@@ -141,7 +143,7 @@ else
   console.info("not equal");
 ```
 
-centerOfPoints
+**centerOfPoints**
 Gets center point of given vector points
 ```javascript
 var points = new Array();
@@ -152,7 +154,7 @@ points.add(new Vector2(8, 7));
 var vCenter = Vector2.centerOfPoints(points);
 ```
 
-sortPointsByAngle
+**sortPointsByAngle**
 Sorts points by starting from X axis
 ```javascript
 var points = new Array();
@@ -163,7 +165,7 @@ points.add(new Vector2(8, 7));
 points = points.sortPointsByAngle(points);
 ```
 
-areaOfPoints
+**areaOfPoints**
 Get total area that given points take
 ```javascript
 var points = new Array();
